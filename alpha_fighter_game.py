@@ -1,20 +1,7 @@
-"""
-Better Move Sprite With Keyboard
-
-Simple program to show moving a sprite with the keyboard.
-This is slightly better than sprite_move_keyboard.py example
-in how it works, but also slightly more complex.
-
-Artwork from http://kenney.nl
-
-If Python and Arcade are installed, this example can be run from the command line with:
-python -m arcade.examples.sprite_move_keyboard_better
-"""
-
 import arcade
-import os
 
 ALPHA_VERITECH_SCALING = 0.2
+INVID_ENFORCER_SCALING = 0.7
 
 SCREEN_WIDTH = 1450
 SCREEN_HEIGHT = 840
@@ -75,12 +62,18 @@ class MyGame(arcade.Window):
 
         # Sprite lists
         self.player_list = arcade.SpriteList()
+        self.invid_enforcer_list = arcade.SpriteList()
 
         # Set up the player
         self.player_sprite = Alpha_Fighter("images/alpha_veritech_blue_right.png", ALPHA_VERITECH_SCALING)
         self.player_sprite.center_x = 100
         self.player_sprite.center_y = 100
         self.player_list.append(self.player_sprite)
+
+        self.invid_enforcer_sprite = arcade.Sprite("images/invid_enforcer.png", INVID_ENFORCER_SCALING)
+        self.invid_enforcer_sprite.center_x = 1200
+        self.invid_enforcer_sprite.center_y = 400
+        self.invid_enforcer_list.append(self.invid_enforcer_sprite)
 
     def on_draw(self):
         """
@@ -97,6 +90,7 @@ class MyGame(arcade.Window):
 
         # Draw all the sprites.
         self.player_list.draw()
+        self.invid_enforcer_list.draw()
 
     def on_update(self, delta_time):
         """ Movement and game logic """
